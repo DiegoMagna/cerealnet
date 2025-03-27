@@ -1,0 +1,20 @@
+import React from "react";
+import Link from "next/link";
+
+const Menu = () => {
+  return (
+    <nav className="bg-[#534b3a] text-white py-2 shadow-md">
+      <div className="container mx-auto flex justify-center space-x-6">
+        <Link href="/" className="hover:underline">Página Principal</Link>
+        <Link href="/nuestros-servicios" className="hover:underline">Nuestros Servicios</Link>
+        <Link href="/que-es-cerealnet" className="hover:underline">¿Qué es CerealNet?</Link>
+        <Link href="#" className="hover:underline">Últimas Noticias</Link>
+       <Link href="/camiones-descarga" className="hover:underline">Camiones a la descarga</Link>
+        <Link href="/contacto" className="hover:underline">Contacto</Link>
+         <Link href="#" className="hover:underline">Clasificados</Link>	
+      </div>
+    </nav>
+  );
+};
+
+export default Menu;
