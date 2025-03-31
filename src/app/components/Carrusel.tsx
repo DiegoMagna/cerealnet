@@ -1,8 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-const Carrusel = ({ tipo }) => {
-  const [publicidades, setPublicidades] = useState([]);
+type CarruselProps = {
+  tipo: string;
+};
+
+const Carrusel = ({ tipo }: CarruselProps) => {
+  const [publicidades, setPublicidades] = useState<any[]>([]);
   const [indiceActual, setIndiceActual] = useState(0);
 
   useEffect(() => {
@@ -23,7 +27,7 @@ const Carrusel = ({ tipo }) => {
     if (publicidades.length > 1) {
       const intervalo = setInterval(() => {
         setIndiceActual((prev) => (prev + 1) % publicidades.length);
-      }, 5000); // Cambia cada 5 segundos
+      }, 5000);
       return () => clearInterval(intervalo);
     }
   }, [publicidades]);
@@ -47,17 +51,16 @@ const Carrusel = ({ tipo }) => {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-contain cursor-pointer" // 🖱️ Agrega la manito
+                className="w-full h-full object-contain cursor-pointer"
                 disablePictureInPicture
                 controls={false}
                 onClick={() => window.open(pub.url, "_blank")}
-                onMouseEnter={(e) => (e.currentTarget.style.cursor = "pointer")} // 🖱️ Aplica cursor de mano en videos
               />
             ) : (
               <img
                 src={pub.imagen}
                 alt="Publicidad"
-                className="w-full h-full object-contain cursor-pointer" // 🖱️ Manito en imágenes
+                className="w-full h-full object-contain cursor-pointer"
                 onClick={() => window.open(pub.url, "_blank")}
               />
             )}
