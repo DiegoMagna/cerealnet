@@ -2,9 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 
+type Cotizaciones = {
+  oficial: number;
+  blue: number;
+  mep: number;
+  ccl: number;
+};
+
 const DolarCompleto = () => {
-  const [cotizaciones, setCotizaciones] = useState(null);
-  const [error, setError] = useState(null);
+  const [cotizaciones, setCotizaciones] = useState<Cotizaciones | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchDolares = async () => {
@@ -26,7 +33,7 @@ const DolarCompleto = () => {
     fetchDolares();
   }, []);
 
-  const formatearNumero = (valor) => {
+  const formatearNumero = (valor: number | undefined) => {
     return typeof valor === "number" ? valor.toFixed(2) : "No disponible";
   };
 
@@ -47,9 +54,7 @@ const DolarCompleto = () => {
     <div className="bg-[#f8f9fa] p-3 rounded-lg shadow-md text-center mx-auto max-w-sm">
       <h2 className="text-md font-semibold text-[#3d3623] mb-2">💵 Cotización del Dólar</h2>
 
-      {/* 🔹 Filas de cotizaciones */}
       <div className="grid grid-cols-2 gap-4 text-sm">
-        {/* 🔹 Primera fila: Oficial y Blue */}
         <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
           <strong>🟢 Oficial</strong>
           <p className="text-green-600 font-bold">${formatearNumero(cotizaciones.oficial)}</p>
@@ -58,8 +63,6 @@ const DolarCompleto = () => {
           <strong>🔵 Blue</strong>
           <p className="text-blue-600 font-bold">${formatearNumero(cotizaciones.blue)}</p>
         </div>
-
-        {/* 🔹 Segunda fila: MEP y CCL */}
         <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
           <strong>🟣 MEP</strong>
           <p className="text-purple-600 font-bold">${formatearNumero(cotizaciones.mep)}</p>
