@@ -1,41 +1,32 @@
-"use client"; // 🔹 Indica que es un componente del lado del cliente
-
 import React, { useEffect, useState } from "react";
 
 const DolarCotizacion = () => {
-  const [cotizaciones, setCotizaciones] = useState([]);
+  const [dolar, setDolar] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDolar = async () => {
       try {
-        const response = await fetch("/api/dolar");
-        const data = await response.json();
-        setCotizaciones(data);
-      } catch (error) {
-        console.error("Error obteniendo la cotización del dólar:", error);
+        const res = await fetch("/api/dolar-blue");
+        const data = await res.json();
+        setDolar(data?.blue);
+      } catch (err) {
+        console.error("Error al obtener la cotización del dólar:", err);
+        setError("No se pudo cargar la cotización.");
       }
     };
 
-    fetchData();
+    fetchDolar();
   }, []);
 
+  if (error) {
+    return <p className="text-red-600">{error}</p>;
+  }
+
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
-      <h2 className="text-lg font-semibold text-green-700">💲 Cotización del Dólar</h2>
-      {cotizaciones.length > 0 ? (
-        <ul className="mt-2 space-y-1">
-          {cotizaciones.map((dolar, index) => (
-            <li key={index} className="bg-gray-50 p-2 rounded shadow-sm flex justify-between">
-              <span className="text-xs font-semibold">{dolar.nombre}</span> {/* ✅ Muestra el nombre del dólar */}
-              <span className="text-xs">
-                Compra: <strong>{dolar.compra}</strong> | Venta: <strong>{dolar.venta}</strong>
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-700 mt-2">Obteniendo datos...</p>
-      )}
+    <div className="bg-white p-4 rounded shadow">
+      <h3 className="text-lg font-bold text-gray-800 mb-2">💵 Dólar Blue</h3>
+      <p className="text-xl text-green-600">{dolar ? `$${dolar}` : "Cargando..."}</p>
     </div>
   );
 };
