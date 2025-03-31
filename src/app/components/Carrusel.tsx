@@ -32,6 +32,14 @@ const Carrusel = ({ tipo }: CarruselProps) => {
     }
   }, [publicidades]);
 
+  const abrirLink = (url: string) => {
+    if (url && (url.startsWith("http://") || url.startsWith("https://"))) {
+      window.open(url, "_blank");
+    } else {
+      console.warn("⚠️ URL no válida:", url);
+    }
+  };
+
   return (
     <div className="relative w-full max-w-[700px] h-[160px] md:h-[200px] lg:h-[220px] bg-white shadow-md rounded-lg flex items-center justify-center overflow-hidden">
       {publicidades.length === 0 ? (
@@ -40,8 +48,9 @@ const Carrusel = ({ tipo }: CarruselProps) => {
         publicidades.map((pub, index) => (
           <div
             key={index}
+            onClick={() => abrirLink(pub.url)}
             className={`absolute w-full h-full flex items-center justify-center transition-opacity duration-500 ${
-              index === indiceActual ? "opacity-100" : "opacity-0"
+              index === indiceActual ? "opacity-100 cursor-pointer" : "opacity-0 pointer-events-none"
             }`}
           >
             {pub.imagen.endsWith(".mp4") ? (
@@ -51,17 +60,15 @@ const Carrusel = ({ tipo }: CarruselProps) => {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-contain cursor-pointer"
+                className="w-full h-full object-contain"
                 disablePictureInPicture
                 controls={false}
-                onClick={() => window.open(pub.url, "_blank")}
               />
             ) : (
               <img
                 src={pub.imagen}
                 alt="Publicidad"
-                className="w-full h-full object-contain cursor-pointer"
-                onClick={() => window.open(pub.url, "_blank")}
+                className="w-full h-full object-contain"
               />
             )}
           </div>
