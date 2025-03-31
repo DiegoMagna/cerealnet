@@ -68,7 +68,7 @@ const Page = () => {
                 type="password"
                 name="clave"
                 placeholder="Clave"
-                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2"
+                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
                 required
               />
               <div className="flex justify-between space-x-1">
