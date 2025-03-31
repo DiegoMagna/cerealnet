@@ -2,6 +2,11 @@ import { NextResponse } from "next/server";
 import { JSDOM } from "jsdom";
 import fetch from "node-fetch";
 
+type MarketPrice = {
+  name: string;
+  price: string;
+};
+
 export async function GET() {
   const url = "https://www.bcr.com.ar/es/mercados/mercado-de-granos/cotizaciones/cotizaciones-locales-0";
 
@@ -15,24 +20,21 @@ export async function GET() {
 
     // 🔹 Seleccionamos las filas de la tabla
     const rows = document.querySelectorAll("table tbody tr");
-    const marketPrices = [];
+    const marketPrices: MarketPrice[] = [];
 
     rows.forEach((row) => {
       const columns = row.querySelectorAll("td");
 
-      // ✅ Verificamos que haya al menos 3 columnas (producto + precio)
       if (columns.length >= 3) {
-        const name = columns[0].textContent.trim();  // 📌 Nombre del producto
-        const price = columns[2].textContent.trim(); // 📌 Tercer columna (Precio)
-
-        // ✅ Si el precio tiene caracteres no numéricos, filtramos solo números y comas/puntos
-        const cleanedPrice = price.replace(/[^0-9.,]/g, "");
+        const name = columns[0]?.textContent?.trim() || ""; // ✅ Aseguramos que no sea null
+        const priceRaw = columns[2]?.textContent?.trim() || "";
+        const cleanedPrice = priceRaw.replace(/[^0-9.,]/g, "");
 
         marketPrices.push({ name, price: cleanedPrice });
       }
     });
 
-    console.log("📊 Precios obtenidos:", marketPrices); // ✅ Log en consola para debug
+    console.log("📊 Precios obtenidos:", marketPrices);
 
     return NextResponse.json(marketPrices);
   } catch (error) {
