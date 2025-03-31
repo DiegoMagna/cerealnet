@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 const MarketPrices = () => {
-  const [marketPrices, setMarketPrices] = useState([]);
+  const [marketPrices, setMarketPrices] = useState<{ name: string; price: string }[]>([]);
+
 
   useEffect(() => {
     const fetchMarketPrices = async () => {
