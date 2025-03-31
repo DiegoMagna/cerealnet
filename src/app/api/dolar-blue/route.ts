@@ -13,10 +13,11 @@ export async function GET() {
     console.log("Datos recibidos de dolarapi.com:", data);
 
     // 🔹 Extraemos las cotizaciones
-    const oficialData = data.find(d => d.nombre.includes("Oficial"));
-    const blueData = data.find(d => d.nombre.includes("Blue"));
-    let mepData = data.find(d => d.nombre.includes("MEP"));
-    let cclData = data.find(d => d.nombre.includes("CCL")); // 🔹 Agregamos CCL
+    const oficialData = data.find((d: any) => d.nombre.includes("Oficial"));
+
+    const blueData  = data.find((d: any) => d.nombre.includes("Blue"));
+    let mepData = data.find((d: any) => d.nombre.includes("MEP"));
+    let cclData = data.find((d: any) => d.nombre.includes("CCL"));
 
     // 🔹 Si el Dólar MEP o CCL no están disponibles, buscamos en dolarhoy.com
     if (!mepData || !cclData) {
