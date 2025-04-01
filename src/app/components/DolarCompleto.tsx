@@ -2,28 +2,23 @@
 
 import React, { useEffect, useState } from "react";
 
-type Cotizaciones = {
-  oficial: number;
-  blue: number;
-  mep: number;
-  ccl: number;
+type Cotizacion = {
+  nombre: string;
+  compra: number;
+  venta: number;
 };
 
 const DolarCompleto = () => {
-  const [cotizaciones, setCotizaciones] = useState<Cotizaciones | null>(null);
+  const [cotizaciones, setCotizaciones] = useState<Record<string, Cotizacion> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchDolares = async () => {
       try {
         const response = await fetch("/api/dolar-blue");
-
-        if (!response.ok) {
-          throw new Error("Error al obtener la cotización del dólar");
-        }
-
+        if (!response.ok) throw new Error("Error al obtener la cotización del dólar");
         const data = await response.json();
-        setCotizaciones(data);
+        setCotizaciones(data); // Debería traer: { blue: {...}, oficial: {...}, mep: {...}, ccl: {...} }
       } catch (err) {
         console.error("Error al obtener la cotización del dólar:", err);
         setError("No se pudo cargar la cotización.");
@@ -33,8 +28,21 @@ const DolarCompleto = () => {
     fetchDolares();
   }, []);
 
-  const formatearNumero = (valor: number | undefined) => {
-    return typeof valor === "number" ? valor.toFixed(2) : "No disponible";
+  const mostrarPrecio = (valor?: number) => {
+    return typeof valor === "number" ? `$${valor.toFixed(2)}` : "No disponible";
+  };
+
+  const renderTarjeta = (titulo: string, key: string, color: string) => {
+    const data = cotizaciones?.[key];
+    return (
+      <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
+        <strong>{titulo}</strong>
+        <p className={`${color} font-bold text-sm`}>
+          Compra: {mostrarPrecio(data?.compra)}<br />
+          Venta: {mostrarPrecio(data?.venta)}
+        </p>
+      </div>
+    );
   };
 
   if (error) {
@@ -55,22 +63,10 @@ const DolarCompleto = () => {
       <h2 className="text-md font-semibold text-[#3d3623] mb-2">💵 Cotización del Dólar</h2>
 
       <div className="grid grid-cols-2 gap-4 text-sm">
-        <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
-          <strong>🟢 Oficial</strong>
-          <p className="text-green-600 font-bold">${formatearNumero(cotizaciones.oficial)}</p>
-        </div>
-        <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
-          <strong>🔵 Blue</strong>
-          <p className="text-blue-600 font-bold">${formatearNumero(cotizaciones.blue)}</p>
-        </div>
-        <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
-          <strong>🟣 MEP</strong>
-          <p className="text-purple-600 font-bold">${formatearNumero(cotizaciones.mep)}</p>
-        </div>
-        <div className="bg-white p-2 rounded-md shadow flex flex-col items-center">
-          <strong>🟡 CCL</strong>
-          <p className="text-yellow-600 font-bold">${formatearNumero(cotizaciones.ccl)}</p>
-        </div>
+        {renderTarjeta("🟢 Oficial", "oficial", "text-green-600")}
+        {renderTarjeta("🔵 Blue", "blue", "text-blue-600")}
+        {renderTarjeta("🟣 MEP", "mep", "text-purple-600")}
+        {renderTarjeta("🟡 CCL", "ccl", "text-yellow-600")}
       </div>
 
       <p className="text-gray-500 text-xs mt-2">📅 Actualizado en tiempo real</p>
