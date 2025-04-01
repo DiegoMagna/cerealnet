@@ -23,7 +23,7 @@ const Clasificados = () => {
                 {/* 🔹 Login a la derecha */}
                 <div className="flex items-center w-full md:w-auto justify-end">
                   <form
-                    action="http://intra.cerealnet.com/LoginU"
+                    action="https://intra.cerealnet.com/LoginU"
                     method="post"
                     className="bg-white p-2 rounded-md shadow-md flex flex-col w-full md:w-44"
                   >
