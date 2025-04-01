@@ -48,7 +48,7 @@ const Page = () => {
           </div>
           <div className="flex items-center w-full md:w-auto justify-end">
             <form
-              action="http://estadisticas.cerealnet.com/LoginU"
+              action="http://intra.cerealnet.com/LoginU"
               method="post"
               className="bg-white p-2 rounded-md shadow-md flex flex-col w-full md:w-44"
             >
