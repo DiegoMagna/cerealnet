@@ -13,6 +13,9 @@ const DolarCotizacion = () => {
     blue: DolarInfo;
     mep: DolarInfo;
     ccl: DolarInfo;
+    mayorista: DolarInfo;
+    tarjeta: DolarInfo;
+    cripto: DolarInfo;
   } | null>(null);
 
   const [error, setError] = useState<string | null>(null);
@@ -47,18 +50,27 @@ const DolarCotizacion = () => {
     <div className="bg-white p-4 rounded shadow text-xs">
       <h3 className="text-md font-bold text-gray-800 mb-2">💵 Cotizaciones del Dólar</h3>
 
-      {["oficial", "blue", "mep", "ccl"].map((tipo) => (
-        <div key={tipo} className="mb-2">
-          <p className="font-semibold capitalize text-gray-700">
-            {tipo === "ccl" ? "🟡 CCL" : tipo === "mep" ? "🟣 MEP" : tipo === "blue" ? "🔵 Blue" : "🟢 Oficial"}
-          </p>
-          <p>
-            Compra: {mostrarPrecio(dolar[tipo as keyof typeof dolar].compra)}
-            <br />
-            Venta: {mostrarPrecio(dolar[tipo as keyof typeof dolar].venta)}
-          </p>
-        </div>
-      ))}
+      {["oficial", "blue", "mep", "ccl", "mayorista", "tarjeta", "cripto"].map((tipo) => (
+  <div key={tipo} className="mb-2">
+    <p className="font-semibold capitalize text-gray-700">
+      {{
+        oficial: "🟢 Oficial",
+        blue: "🔵 Blue",
+        mep: "🟣 MEP",
+        ccl: "🟡 CCL",
+        mayorista: "🏦 Mayorista",
+        tarjeta: "💳 Tarjeta",
+        cripto: "🧠 Cripto",
+      }[tipo as keyof typeof dolar]}
+    </p>
+    <p>
+      Compra: {mostrarPrecio(dolar[tipo as keyof typeof dolar].compra)}
+      <br />
+      Venta: {mostrarPrecio(dolar[tipo as keyof typeof dolar].venta)}
+    </p>
+  </div>
+))}
+
     </div>
   );
 };
