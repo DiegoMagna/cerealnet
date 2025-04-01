@@ -63,10 +63,13 @@ const DolarCompleto = () => {
       <h2 className="text-md font-semibold text-[#3d3623] mb-2">💵 Cotización del Dólar</h2>
 
       <div className="grid grid-cols-2 gap-4 text-sm">
-        {renderTarjeta("🟢 Oficial", "oficial", "text-green-600")}
-        {renderTarjeta("🔵 Blue", "blue", "text-blue-600")}
-        {renderTarjeta("🟣 MEP", "mep", "text-purple-600")}
-        {renderTarjeta("🟡 CCL", "ccl", "text-yellow-600")}
+      {renderTarjeta("🟢 Oficial", "oficial", "text-green-600")}
+  {renderTarjeta("🔵 Blue", "blue", "text-blue-600")}
+  {renderTarjeta("🟣 MEP", "mep", "text-purple-600")}
+  {renderTarjeta("🟡 CCL", "ccl", "text-yellow-600")}
+  {renderTarjeta("💳 Tarjeta", "tarjeta", "text-pink-600")}
+  {renderTarjeta("🏦 Mayorista", "mayorista", "text-indigo-600")}
+  {renderTarjeta("🧠 Cripto", "cripto", "text-teal-600")}
       </div>
 
       <p className="text-gray-500 text-xs mt-2">📅 Actualizado en tiempo real</p>
