@@ -11,22 +11,22 @@ export async function GET() {
     const data = await response.json();
     console.log("Datos recibidos de dolarapi.com:", data);
 
-    const getCotizacion = (nombre: string) => {
-      const result = data.find((d: any) => d.nombre.toLowerCase().includes(nombre.toLowerCase()));
-      return result ? { compra: result.compra, venta: result.venta } : { compra: "No disponible", venta: "No disponible" };
+    const getDolar = (nombre: string) => {
+      const found = data.find((d: any) => d.nombre.toLowerCase().includes(nombre.toLowerCase()));
+      return found ? { compra: found.compra, venta: found.venta } : { compra: "No disponible", venta: "No disponible" };
     };
 
     return NextResponse.json({
-      oficial: getCotizacion("oficial"),
-      blue: getCotizacion("blue"),
-      mep: getCotizacion("mep"),
-      ccl: getCotizacion("contado con liquidación"),
-      tarjeta: getCotizacion("tarjeta"),
-      mayorista: getCotizacion("mayorista"),
-      cripto: getCotizacion("cripto"),
+      oficial: getDolar("Oficial"),
+      blue: getDolar("Blue"),
+      mep: getDolar("MEP"),
+      ccl: getDolar("CCL"),
+      tarjeta: getDolar("Tarjeta"),
+      mayorista: getDolar("Mayorista"),
+      cripto: getDolar("Cripto"),
     });
   } catch (error) {
-    console.error("❌ Error obteniendo cotizaciones:", error);
-    return NextResponse.json({ error: "No se pudo obtener la cotización del dólar" }, { status: 500 });
+    console.error("Error en API de Dólar:", error);
+    return NextResponse.json({ error: "No se pudo obtener la cotización del dólar." }, { status: 500 });
   }
 }
