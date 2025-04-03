@@ -9,16 +9,14 @@ const Clasificados = () => {
     <div className="min-h-screen bg-gray-100 text-sm">
       {/* 🔹 Encabezado con fondo negro */}
       <header className="bg-[#321818] text-[#ffffff] py-3 shadow-md">
-              <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 space-y-3 md:space-y-0">
-
-                {/* 🔹 Logo a la izquierda */}
-                <div className="flex items-center">
-                  <img
-                    src="/logo.png"
-                    alt="Logo AgroSoft"
-                    className="w-36 md:w-48 object-contain"
-                  />
-                </div>
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 space-y-3 md:space-y-0">
+          <div className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="Logo AgroSoft"
+              className="w-52 md:w-72 object-contain" // 🔁 Agrandado un 20%
+            />
+          </div>
 
                 {/* 🔹 Login a la derecha */}
                 <div className="flex items-center w-full md:w-auto justify-end">
