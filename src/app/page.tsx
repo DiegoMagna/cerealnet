@@ -43,7 +43,7 @@ const Page = () => {
             <img
               src="/logo.png"
               alt="Logo AgroSoft"
-              className="w-43 md:w-58 object-contain"
+              className="w-36 md:w-48 object-contain"
             />
           </div>
           <div className="flex items-center w-full md:w-auto justify-end">
