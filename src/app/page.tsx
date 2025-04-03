@@ -43,7 +43,7 @@ const Page = () => {
             <img
               src="/logo.png"
               alt="Logo AgroSoft"
-              className="w-44 md:w-60 object-contain" // 🔁 Agrandado un 20%
+              className="w-52 md:w-72 object-contain" // 🔁 Agrandado un 20%
             />
           </div>
 
