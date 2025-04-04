@@ -43,9 +43,21 @@ const NuestrosServicios = () => {
             >
               <h2 className="text-center text-xs font-semibold text-[#3d3623] mb-1">Ingresar</h2>
               <label className="text-gray-700 text-xs">Usuario</label>
-              <input type="text" name="IdUsuario" placeholder="Usuario" className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-1" required />
+              <input
+                type="text"
+                name="IdUsuario"
+                placeholder="Usuario"
+                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
+                required
+              />
               <label className="text-gray-700 text-xs">Contraseña</label>
-              <input type="password" name="clave" placeholder="Clave" className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2" required />
+              <input
+                type="password"
+                name="clave"
+                placeholder="Clave"
+                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
+                required
+              />
               <div className="flex justify-between space-x-1">
                 <button type="submit" className="bg-green-600 text-white px-2 py-1 text-xs rounded-md hover:bg-green-700 transition">Ingresar</button>
                 <button

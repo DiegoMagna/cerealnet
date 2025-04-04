@@ -32,20 +32,20 @@ const Contacto = () => {
                </h2>
                <label className="text-gray-700 text-xs">Usuario</label>
                <input
-                 type="text"
-                 name="IdUsuario"
-                 placeholder="Usuario"
-                 className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-1"
-                 required
-               />
-               <label className="text-gray-700 text-xs">Contraseña</label>
-               <input
-                 type="password"
-                 name="clave"
-                 placeholder="Clave"
-                 className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2"
-                 required
-               />
+                type="text"
+                name="IdUsuario"
+                placeholder="Usuario"
+                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
+                required
+              />
+              <label className="text-gray-700 text-xs">Contraseña</label>
+              <input
+                type="password"
+                name="clave"
+                placeholder="Clave"
+                className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
+                required
+              />
                <div className="flex justify-between space-x-1">
                  <button
                    type="submit"

@@ -33,7 +33,7 @@ const Clasificados = () => {
                       type="text"
                       name="IdUsuario"
                       placeholder="Usuario"
-                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-1"
+                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
                       required
                     />
                     <label className="text-gray-700 text-xs">Contraseña</label>
@@ -41,7 +41,7 @@ const Clasificados = () => {
                       type="password"
                       name="clave"
                       placeholder="Clave"
-                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2"
+                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
                       required
                     />
                     <div className="flex justify-between space-x-1">
