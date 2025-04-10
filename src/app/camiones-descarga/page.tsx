@@ -36,7 +36,7 @@ const CamionesDescarga = () => {
                       type="text"
                       name="IdUsuario"
                       placeholder="Usuario"
-                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-1"
+                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
                       required
                     />
                     <label className="text-gray-700 text-xs">Contraseña</label>
@@ -44,7 +44,7 @@ const CamionesDescarga = () => {
                       type="password"
                       name="clave"
                       placeholder="Clave"
-                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2"
+                      className="border border-gray-300 rounded-md px-2 py-1 text-xs mb-2 text-black" 
                       required
                     />
                     <div className="flex justify-between space-x-1">
@@ -80,12 +80,12 @@ const CamionesDescarga = () => {
 
           {/* 🔹 Embeber el contenido de la URL */}
           <iframe
-            src="http://www.cerealnet.com.ar/movil/camionesdescargah.aspx"
+            src="https://camiones.cerealnet.com/"
             className="w-full h-[600px] border rounded-lg shadow-lg"
           ></iframe>
 
           <p className="text-gray-500 text-sm mt-4">
-            Fuente: <a href="http://www.cerealnet.com.ar/movil/camionesdescargah.aspx" target="_blank" className="text-blue-600 hover:underline">CerealNet</a>
+            Fuente: <a href="https://camiones.cerealnet.com/" target="_blank" className="text-blue-600 hover:underline">CerealNet</a>
           </p>
         </section>
       </main>
