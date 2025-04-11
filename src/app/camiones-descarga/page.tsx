@@ -80,12 +80,12 @@ const CamionesDescarga = () => {
 
           {/* 🔹 Embeber el contenido de la URL */}
           <iframe
-            src="https://camiones.cerealnet.com/"
+            src="https://camiones.cerealnet.com/CamionesDescargaH.aspx"
             className="w-full h-[600px] border rounded-lg shadow-lg"
           ></iframe>
 
           <p className="text-gray-500 text-sm mt-4">
-            Fuente: <a href="https://camiones.cerealnet.com/" target="_blank" className="text-blue-600 hover:underline">CerealNet</a>
+            Fuente: <a href="https://camiones.cerealnet.com/CamionesDescargaH.aspx" target="_blank" className="text-blue-600 hover:underline">CerealNet</a>
           </p>
         </section>
       </main>

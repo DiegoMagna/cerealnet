@@ -1,4 +1,9 @@
 copiar cambios en el servidor
+git add .
+git commit -m "Fix: modificación en X componente"
+git push origin main
+
+
 cd /var/www/cerealnet
 git pull origin main
 npm install
